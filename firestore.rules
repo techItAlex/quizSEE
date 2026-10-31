@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Professor allowlist. Keep in sync with TEACHER_EMAILS in config.js.
+    function isTeacher() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['markjenelcortas29@gmail.com'];
+    }
+
+    function signedIn() { return request.auth != null; }
+
+    match /users/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && (request.resource.data.role != 'teacher' || isTeacher());
+    }
+
+    match /sessions/{sessionId} {
+      // Any signed-in user may read so students can find the active session.
+      allow read: if signedIn();
+      allow create: if isTeacher() && request.resource.data.teacherUid == request.auth.uid;
+      allow update, delete: if isTeacher() && resource.data.teacherUid == request.auth.uid
+        && request.resource.data.teacherUid == request.auth.uid;
+
+      match /attempts/{studentUid} {
+        allow create, update: if signedIn() && request.auth.uid == studentUid
+          && get(/databases/$(database)/documents/sessions/$(sessionId)).data.status == 'active';
+        // The teacher may mark unfinished attempts not_submitted when ending the quiz.
+        allow update: if isTeacher()
+          && get(/databases/$(database)/documents/sessions/$(sessionId)).data.teacherUid == request.auth.uid;
+        allow read: if signedIn() && (request.auth.uid == studentUid
+          || get(/databases/$(database)/documents/sessions/$(sessionId)).data.teacherUid == request.auth.uid);
+      }
+    }
+  }
+}

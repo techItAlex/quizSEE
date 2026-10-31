@@ -1,0 +1,7 @@
+#quizsee-banner {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  z-index: 2147483647; background: #1a73e8; color: #fff;
+  font: 500 13px/1 Roboto, Arial, sans-serif; padding: 6px 14px;
+  border-radius: 0 0 8px 8px; box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  pointer-events: none;
+}
