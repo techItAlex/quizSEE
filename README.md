@@ -1,4 +1,8 @@
-# quizSEE
+<p align="center">
+  <img src="docs/banner.svg" alt="quizSEE: a transparent quiz monitor for Google Forms" width="100%">
+</p>
+
+# quizSEE: a transparent quiz monitor for Google Forms
 
 **See how the quiz was taken.** quizSEE is a Chrome extension (Manifest V3) that watches *behavior* while students answer a **Google Forms** quiz, then gives the professor a live view and a results dashboard: who took the quiz, how focused they were, and how likely it is that something is worth a closer look.
 
@@ -7,6 +11,18 @@ It is transparent by design. Students are told they are monitored, a banner stay
 - **Extension:** vanilla JavaScript, no build step, no frameworks.
 - **Backend:** Firebase Auth (Google sign-in) and Cloud Firestore on the free Spark plan, called through the REST APIs with no SDK.
 - **Scoring:** simple, rule-based and explainable. Every rating shows its reasons.
+
+## Screenshots
+*Screenshots use made-up sample data.*
+
+**Sign in.** One page for students and professors. It shows what is recorded and what never is.
+![Sign-in page](docs/screenshot-signin.png)
+
+**Results.** One row per student on the roster, with status, time taken, tab switches, focus and a risk rating with reasons.
+![Results dashboard](docs/screenshot-results.png)
+
+**Student detail.** A timeline of the attempt: page changes, time away from the tab, and copy and paste moments.
+![Student detail panel](docs/screenshot-detail.png)
 
 ---
 
