@@ -5,7 +5,7 @@ Start this now. I'm coding while you do it. Do the steps in order. Everything is
 **Your extension ID (already generated, never changes):** `jijiajkafnoemaghockmnmikflkgidha`
 **Your OAuth redirect URI:** `https://jijiajkafnoemaghockmnmikflkgidha.chromiumapp.org/`
 
-I pre-filled `markjenelcortas29@gmail.com` as the professor/teacher email in `config.js` and `firestore.rules`. If you want other emails to be professors, add them in both files (step F).
+I pre-filled `alexandercuison07@gmail.com` as the professor/teacher email in `config.js` and `firestore.rules`. If you want other emails to be professors, add them in both files (step F).
 
 ---
 
@@ -58,7 +58,7 @@ Open `config.js` in this folder and replace the placeholders:
 FIREBASE_API_KEY: "AIza...",
 FIREBASE_PROJECT_ID: "quizsee-xxxxx",
 GOOGLE_OAUTH_CLIENT_ID: "123...apps.googleusercontent.com",
-TEACHER_EMAILS: ["markjenelcortas29@gmail.com"],
+TEACHER_EMAILS: ["alexandercuison07@gmail.com"],
 ```
 If you add more professor emails, add them in **`firestore.rules`** too (the `teacherEmails` list at the top), then re-publish the rules (step C.4).
 

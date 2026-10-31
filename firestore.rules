@@ -6,7 +6,7 @@ service cloud.firestore {
     function isTeacher() {
       return request.auth != null
         && request.auth.token.email_verified == true
-        && request.auth.token.email in ['markjenelcortas29@gmail.com'];
+        && request.auth.token.email in ['alexandercuison07@gmail.com'];
     }
 
     function signedIn() { return request.auth != null; }
