@@ -4,20 +4,49 @@
   "version": "1.0.0",
   "description": "Transparent quiz-behavior monitoring for Google Forms quizzes.",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu2/cc2nmdgW2fVGeTUx1Hn1psTTgXXf2vhcBASl2n/D9c22P33UROfRKwphC3tEt+UfVYrhzKdDvaejuyI/X1JOT/kwrSHhLJUyzclQMm1t2Z0EgB2oTJy/DzDbp+oAR4TWwXGQjEtYFuIl4I61rAvCHDIfbMVxUHfiawgXuJL8m1HknYZbYMWAyoXEkSdEQPY7lAvRi7qznDvSDDIs6fTtripex7rkJx1o5rXBXhuT239k19CUf747rSbMAz574mD606IPzMdhII61LHS5VfHQirR9xYfHGdwBwqgsmn9f91/rwgJvWz9NzrqZOAF5YFIFMYUoxqZR3zfUcxEjnawIDAQAB",
-  "permissions": ["identity", "storage", "alarms"],
+  "permissions": [
+    "identity",
+    "storage",
+    "alarms"
+  ],
   "host_permissions": [
     "https://firestore.googleapis.com/*",
     "https://identitytoolkit.googleapis.com/*",
     "https://securetoken.googleapis.com/*"
   ],
-  "action": { "default_popup": "popup/popup.html", "default_title": "quizSEE" },
-  "background": { "service_worker": "background/service-worker.js", "type": "module" },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "quizSEE",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
   "content_scripts": [
     {
-      "matches": ["https://docs.google.com/forms/*"],
-      "js": ["lib/selectors.js", "content/forms-monitor.js"],
-      "css": ["content/banner.css"],
+      "matches": [
+        "https://docs.google.com/forms/*"
+      ],
+      "js": [
+        "lib/selectors.js",
+        "content/forms-monitor.js"
+      ],
+      "css": [
+        "content/banner.css"
+      ],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }

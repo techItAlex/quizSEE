@@ -130,10 +130,10 @@
       if (stopped || submitted) return;
       if (QS.isConfirmationPage()) { markSubmitted(); return; }
       const s = QS.pageSignature();
-      if (s === sig) return;
+      const fromText = QS.pageIndexFromText();
+      if (s === sig && (fromText == null || fromText === page)) return;
       sig = s;
       accruePage();
-      const fromText = QS.pageIndexFromText();
       const recent = Date.now() - lastNavClick.t < 4000;
       page = fromText != null ? fromText : Math.max(0, page + (recent && lastNavClick.kind === "back" ? -1 : 1));
       S.pageChanges++;
@@ -145,6 +145,7 @@
       if (!kind) return;
       lastNavClick = { kind, t: Date.now() };
       if (kind === "submit") flush(); // best-effort save before the page navigates
+      else setTimeout(guard(pageChanged), 900); // re-check after the form has re-rendered
     }), true);
     new MutationObserver(() => { clearTimeout(sigTimer); sigTimer = setTimeout(pageChanged, 400); })
       .observe(document.body, { childList: true, subtree: true });

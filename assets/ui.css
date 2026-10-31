@@ -1,0 +1,86 @@
+/* quizSEE shared design tokens + base components. Fonts are bundled locally (OFL licensed). */
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 700; font-display: swap; src: url(fonts/bricolage-grotesque-700.woff2) format("woff2"); }
+@font-face { font-family: "Bricolage Grotesque"; font-weight: 800; font-display: swap; src: url(fonts/bricolage-grotesque-800.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 400; font-display: swap; src: url(fonts/instrument-sans-400.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 600; font-display: swap; src: url(fonts/instrument-sans-600.woff2) format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 500; font-display: swap; src: url(fonts/ibm-plex-mono-500.woff2) format("woff2"); }
+
+:root {
+  --paper: #f2f4f9;
+  --card: #ffffff;
+  --ink: #12172b;
+  --ink-2: #4a5170;
+  --line: #dce0ec;
+  --blue: #2438c9;
+  --blue-deep: #1a2a9c;
+  --blue-wash: #e8ebfc;
+  --mark: #ffd83d;
+  --mark-wash: #fff6cc;
+  --ok: #0b7a55;      --ok-wash: #ddf3ea;
+  --warn: #8a5300;    --warn-wash: #fff0cc;
+  --bad: #b3243a;     --bad-wash: #fbe3e7;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --r-card: 16px;
+  --r-ctl: 10px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 15px/1.5 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+a { color: var(--blue); }
+.mono { font-family: var(--mono); font-weight: 500; }
+.muted { color: var(--ink-2); }
+.small { font-size: 13px; }
+
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
+
+/* Buttons */
+.btn {
+  font: 600 14px/1 var(--body); display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 12px 18px; border-radius: var(--r-ctl); border: 1.5px solid var(--blue);
+  background: var(--blue); color: #fff; cursor: pointer; text-decoration: none;
+  transition: background .15s, transform .08s, border-color .15s;
+}
+.btn:hover { background: var(--blue-deep); border-color: var(--blue-deep); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .55; cursor: default; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.ghost:hover { background: var(--card); border-color: var(--ink-2); }
+.btn.danger { background: var(--bad); border-color: var(--bad); }
+.btn.danger:hover { background: #8f1a2c; border-color: #8f1a2c; }
+.btn.block { width: 100%; }
+
+/* Status chips: color + text + dot, never color alone */
+.chip {
+  display: inline-flex; align-items: center; gap: 7px; padding: 3px 10px 3px 8px;
+  border-radius: 999px; font: 600 12.5px/1.4 var(--body); white-space: nowrap;
+}
+.chip i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.chip.ok { background: var(--ok-wash); color: var(--ok); }
+.chip.warn { background: var(--warn-wash); color: var(--warn); }
+.chip.bad { background: var(--bad-wash); color: var(--bad); }
+.chip.mute { background: #e9ebf3; color: var(--ink-2); }
+.chip.blue { background: var(--blue-wash); color: var(--blue-deep); }
+
+/* Brand */
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand svg { width: 32px; height: 32px; display: block; }
+.brand span { font: 800 22px/1 var(--display); letter-spacing: -0.03em; }
+
+/* Inline notices */
+.notice { border-radius: var(--r-ctl); padding: 12px 14px; font-size: 14px; }
+.notice.err { background: var(--bad-wash); color: #7d1526; border: 1px solid #f0b9c2; }
+.notice.info { background: var(--blue-wash); color: var(--blue-deep); }
+.notice.watch { background: var(--mark-wash); color: #4d3d00; border: 1px solid #f2dc7a; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

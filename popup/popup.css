@@ -1,8 +1,11 @@
-body { width: 320px; margin: 0; padding: 16px; font: 14px/1.4 system-ui, sans-serif; color: #202124; }
-h1 { font-size: 18px; margin: 0 0 12px; color: #1a73e8; }
-button { font: inherit; padding: 8px 12px; border-radius: 6px; border: 1px solid #1a73e8; background: #1a73e8; color: #fff; cursor: pointer; width: 100%; margin-top: 8px; }
-button.secondary { background: #fff; color: #1a73e8; }
-label { display: block; padding: 6px 0; }
-.warn { background: #fef7e0; border: 1px solid #f9ab00; border-radius: 6px; padding: 10px; margin: 10px 0; }
-.err { background: #fce8e6; border: 1px solid #d93025; color: #a50e0e; border-radius: 6px; padding: 8px; margin: 8px 0; }
-.muted { color: #5f6368; font-size: 12px; }
+body { width: 340px; padding: 18px; background: #fff; }
+.head { margin-bottom: 16px; }
+.brand svg { width: 28px; height: 28px; }
+.brand span { font-size: 20px; }
+.me { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.avatar { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--blue-wash); color: var(--blue-deep); font: 700 14px/1 var(--display); }
+.me b { display: block; font-weight: 600; line-height: 1.25; }
+.me .small { overflow-wrap: anywhere; }
+.stack { display: grid; gap: 10px; margin-top: 14px; }
+.notice.watch { line-height: 1.5; }
+h2 { font-size: 20px; margin-bottom: 8px; }
